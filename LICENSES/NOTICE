@@ -1,0 +1,40 @@
+eReader voices
+
+The releases of this repository redistribute the works below, each under the Apache License, Version 2.0, whose full
+text is in Apache-2.0.txt beside this file. No redistributed work is under any other license. The origins publish no
+NOTICE files of their own and state no copyright lines; each copyright holder below is the account that publishes the
+work.
+
+1. Kokoro-82M, the text-to-speech model's weights and voice styles
+   Copyright holder: hexgrad
+   Origin: https://huggingface.co/hexgrad/Kokoro-82M
+   License: Apache 2.0 (model card, license: apache-2.0)
+   In assets: model_fp16.onnx, tokenizer.json, af_heart.bin, af_bella.bin, af_nicole.bin, am_michael.bin,
+   am_fenrir.bin, bf_emma.bin, bm_george.bin, through the export in 2
+
+2. Kokoro-82M v1.0, ONNX export with timestamps
+   Copyright holder: onnx-community
+   Origin: https://huggingface.co/onnx-community/Kokoro-82M-v1.0-ONNX-timestamped
+   Revision: dd4401a9add81ac692d20e240d22ec9dda82cc29
+   License: Apache 2.0 (model card, license: apache-2.0)
+   In assets: model_fp16.onnx (from onnx/model_fp16.onnx), tokenizer.json, and the seven voice files (from voices/)
+   Modified: model_fp16.onnx was changed by this repository's patch_atan.py, which inserts IsNaN and Where nodes
+   between the generator's phase Div and its Atan so that 0/0 gives a phase of 0 instead of NaN. No other file was
+   changed.
+
+3. misaki, the grapheme-to-phoneme library's US English dictionaries (us_gold, us_silver)
+   Copyright holder: hexgrad
+   Origin: https://github.com/hexgrad/misaki
+   Revision: fba1236595f2d2bf21d414ba6e57d25256afada3
+   License: Apache 2.0 (LICENSE)
+   In assets: misaki-en_us-g2p.json, through the package in 4
+
+4. misaki G2P (US English), ONNX
+   Copyright holder: nekwo (ONNX conversion and packaging)
+   Origin: https://huggingface.co/nekwo/misaki-en-us-g2p-onnx
+   Revision: 4b3a605d2f605318ab4f762ab9855c44106528b7
+   License: Apache 2.0 (model card, license: apache-2.0)
+   In assets: misaki-en_us-g2p.onnx, misaki-en_us-g2p.json
+   Built from the fallback model graphemes_to_phonemes_en_us
+   (copyright holder: PeterReid, https://huggingface.co/PeterReid/graphemes_to_phonemes_en_us, Apache 2.0),
+   misaki's dictionaries (3), and Kokoro-82M's phoneme vocabulary (1).
